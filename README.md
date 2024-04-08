@@ -143,7 +143,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
 
         ---
         
-        <img src="./img/img1.PNG" alt="" style="width: 300px;">
+        <img src="./img/img1.PNG" alt="" style="width: 3000px;">
     
     ---
 
