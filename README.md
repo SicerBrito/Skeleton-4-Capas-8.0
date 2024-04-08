@@ -24,7 +24,7 @@ Esqueleto con la estructura base para el desarrollo BackEnd con .Net 8.0, sus Sn
         - [Estructura Base](#estructura-base) 🚧
         - [Referencias](#referencias) 🔗
     - [Gestión de Datos](#gestión-de-datos) 📇
-        - [Instalacion de Paquetes](#instalacion-de-paquetes) ⏬
+        - [Instalación de Paquetes](#instalación-de-paquetes) ⏬
             - [Dominio](#dominio) 📂
             - [Persistencia](#persistencia) 📂
             - [API](#api) 📂
@@ -185,7 +185,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
 
 ## Gestión de Datos
 
-- ### Instalacion de Paquetes
+- ### Instalación de Paquetes
 
     - ### Dominio
 
@@ -196,7 +196,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
             ```
             ---
 
-        - Esta línea de comando agrega el paquete 'MediatR.Extensions.Microsoft.DependencyInjection' a tu proyecto actual utilizando la versión 11.1.0. MediatR es una biblioteca que facilita la implementación del patrón Mediator en aplicaciones .NET. Al agregar este paquete, obtienes acceso a una serie de extensiones que integran MediatR con el contenedor de inyección de dependencias proporcionado por Microsoft.Extensions.DependencyInjection. Esto simplifica la configuración y la resolución de dependencias para tus controladores y manipuladores de MediatR, lo que facilita el desarrollo de aplicaciones escalables y mantenibles 📂🔧
+        - Esta línea de comando agrega el paquete "MediatR.Extensions.Microsoft.DependencyInjection" a tu proyecto actual utilizando la versión 11.1.0. MediatR es una biblioteca que facilita la implementación del patrón Mediator en aplicaciones .NET. Al agregar este paquete, obtienes acceso a una serie de extensiones que integran MediatR con el contenedor de inyección de dependencias proporcionado por Microsoft.Extensions.DependencyInjection. Esto simplifica la configuración y la resolución de dependencias para tus controladores y manipuladores de MediatR, lo que facilita el desarrollo de aplicaciones escalables y mantenibles 📂🔧
             ```
             dotnet add package MediatR.Extensions.Microsoft.DependencyInjection --version 11.1.0
             ```
@@ -312,7 +312,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
         ---
 
     - ### Actualizar
-        - Este comando aplica las migraciones pendientes en la base de datos, lo que implica actualizar la estructura de la base de datos para que coincida con el estado actual del modelo de datos en los proyectos .NET Core involucrados. ✈️🔧
+        - Este comando aplica las migraciones pendientes en la base de datos, lo que implica actualizar la estructura de la base de datos para que coincida con el estado actual del modelo de datos en los proyectos .NET Core involucrados ✈️🔧
             ```
             dotnet ef database update --project ./Persistencia/ --startup-project ./API/  
             ```
@@ -322,7 +322,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
 - ### Visualización de posibles errores  
     Este comando se utiliza para construir (compilar) los proyectos en sus respectivos directorios, una ventaja que posee este comando es que nos permite ver que errores podemos tener a la hora de complilar 🏗️
 
-    - Compila el proyecto ubicado en el directorio actual. Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas u otros tipos de archivos de salida según la configuración del proyecto. 🏗️
+    - Compila el proyecto ubicado en el directorio actual. Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas u otros tipos de archivos de salida según la configuración del proyecto 🏗️
         ```
         dotnet build   
         ```
@@ -332,13 +332,13 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
 
     **Ejemplos:**
     
-    - Compila el proyecto ubicado en la carpeta "Persistencia". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto. 🏗️
+    - Compila el proyecto ubicado en la carpeta "Persistencia". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto 🏗️
         ```
         dotnet build ./Persistencia/
         ```
             
         ---
-    - Compila el proyecto ubicado en la carpeta "API". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto. 🏗️
+    - Compila el proyecto ubicado en la carpeta "API". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto 🏗️
         ```
         dotnet build ./API/
         ```
