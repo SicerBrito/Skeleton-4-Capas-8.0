@@ -140,6 +140,11 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
         ```
         dotnet sln add API/
         ```
+
+        ---
+        
+        <img src="./img/img1.PNG" alt="" style="width: 300px;">
+    
     ---
 
 ---
@@ -174,7 +179,9 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
         ```
         dotnet add reference ../Dominio/
         ```
+
     ---
+
 
 
 ---
