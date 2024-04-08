@@ -32,6 +32,7 @@ Esqueleto con la estructura base para el desarrollo BackEnd con .Net 8.0, sus Sn
             - [Crear](#crear) 🔧
             - [Actualizar](#actualizar) 🔧
         - [Visualización de posibles errores](#visualización-de-posibles-errores) ⁉️
+    - [Construcción del Código Base](#construcción-del-código-base)
 
 
 ---
@@ -347,5 +348,7 @@ Estas son las carpetas de configuración las cuales vamos a utilizar para nuestr
 
    <img src="https://dinahosting.com/blog/upload/2023/11/net-8.jpg" alt="img" style="width: 3000px;">
 
+---
 
 
+## Construcción del Código Base
