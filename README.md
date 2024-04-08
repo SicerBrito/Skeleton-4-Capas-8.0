@@ -1,6 +1,3 @@
-# Skeleton-4-Capas-8.0
-Esqueleto con la estructura base para el desarrollo BackEnd con sus Snippets y su documentación
-
 
 ---
 <div style="background-image: url(https://media3.giphy.com/media/wwg1suUiTbCY8H8vIA/giphy.gif?cid=ecf05e47hfu84pmh8vk2mo5wohm7vxo4hcx1gu3ye1664zcy&ep=v1_gifs_search&rid=giphy.gif&ct=g); display: flex; justify-content: center;">
@@ -30,8 +27,7 @@ Esqueleto con la estructura base para el desarrollo BackEnd con .Net 8.0, sus Sn
         - [Instalacion de Paquetes](#instalacion-de-paquetes) ⏬
             - [Dominio](#dominio) 📂
             - [Persistencia](#persistencia) 📂
-            - [Seguridad](#seguridad) 📂 
-            - [WebApi](#webapi) 📂
+            - [API](#api) 📂
         - [Migraciones](#migraciones) ✈️
             - [Crear](#crear) 🔧
             - [Actualizar](#actualizar) 🔧
@@ -43,25 +39,24 @@ Esqueleto con la estructura base para el desarrollo BackEnd con .Net 8.0, sus Sn
 Mi objetivo con este proyecto es centrarme en la eficiencia del desarrollo BackEnd y hacer este proceso menos tedioso y corto. Espero que mi contribución sea lo más efectiva posible para todo aquel que desee realizar un proyecto similar con esta estructura 📄  
 
 ## Estructura del Proyecto
-Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestros proyectos BackEnd
+Estas son las carpetas de configuración las cuales vamos a utilizar para nuestros proyectos BackEnd
+
  - 📂 En Dominio  
-        Aqui se crean las tablas que representan la Base de Datos y van a estar ubicadas las carpetas de Entidades e Interfaces
+        Aquí se crean las tablas que representan la Base de Datos y van a estar ubicadas las carpetas de Entities e Interfaces
 
  - 📂 En Persistencia  
-        Aqui se crea la instancia de conexion a la Base de Datos  y van a estar ubicadas las carpetas de Data, Configuracion, Archivo Context y Migraciones
+        Aquí se crea la instancia de conexión a la Base de Datos y van a estar ubicadas las carpetas de Data, Configuration, Archivo Context (DbAppContext) y Migrations
 
  - 📂 En Aplicacion  
-        Aqui se crea la inyeccion de dependecia para la comunicacion con el WebApi y van a estar ubicadas las carpetas de Unidad de trabajo y Repositorios
+        Aquí se crea la inyección de dependencias para la comunicación con la API y van a estar ubicadas las carpetas de UnitOfWork y Repository
         
- - 📂 En WebApi  
-        Aqui se crean clases encargadas de recibir peticiones de los clientes y van a estar ubicadas las carpetas de Controllers, Dtos, Extensions, Helpers, Profiles, Contenedor de dependecias(program.cs) y Extenciones
+ - 📂 En API  
+        Aquí se crean clases encargadas de recibir peticiones de los clientes y van a estar ubicadas las carpetas de Controllers, Dtos, Extensions, Helpers, Profiles, Contenedor de dependecias (program.cs) y Extensions. Además se crean clases encargadas de la configuración de los archivos JWT (JSON Web Tokens) para la seguridad de nuestro proyecto
 
- - 📂 En Seguridad  
-        Aqui se crean clases encargadas de la configuración de los archivos JWT(JSON Web Tokens) para la seguridad de nuestro proyecto. Esta parte no es obligatoria ya que se puede hacer directamente desde WebApi y por razones de eficiencia y contruccion es una mejor forma de hacerlo sin esta carpeta.
 
 ---
 
-   <img src="https://github.com/SicerBrito/SicerWebApi/blob/main/Img/Relaciones.png?raw=true" alt="Relaciones" style="width: 3000px;">
+   <img src="https://github.com/SicerBrito/NuevaEstructura/raw/main/Img/Relaciones.PNG" alt="Relaciones" style="width: 3000px;">
 
 ---
 
@@ -74,7 +69,7 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
  - ### Estructura Base
     
     ---
-    - Instala la herramienta "dotnet-ef" globalmente para trabajar con Entity Framework Core. 🚧🔧
+    - Instala la herramienta "dotnet-ef" globalmente para trabajar con Entity Framework Core 🚧🔧
         ```
         dotnet tool install --global dotnet-ef 
         ```
@@ -105,56 +100,44 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
         ```
 
     ---
-    - Crea un nuevo proyecto de biblioteca de clases utilizando .NET Core y lo guarda en la carpeta "Persistencia". Las bibliotecas de clases son conjuntos de código reutilizable que pueden ser referenciados y utilizados en otros proyectos .NET Core. En este caso, el nombre "Persistencia" sugiere que esta biblioteca podría contener clases y lógica relacionada con el acceso y la manipulación de datos, como el uso de bases de datos y almacenamiento persistente. 🚧🔧
+    - Crea un nuevo proyecto de biblioteca de clases utilizando .NET Core y lo guarda en la carpeta "Persistencia". Las bibliotecas de clases son conjuntos de código reutilizable que pueden ser referenciados y utilizados en otros proyectos .NET Core. En este caso, el nombre "Persistencia" sugiere que esta biblioteca podría contener clases y lógica relacionada con el acceso y la manipulación de datos, como el uso de bases de datos y almacenamiento persistente 🚧🔧
         ```
         dotnet new classlib -o Persistencia
         ```
     ---
-    - Crea un nuevo proyecto de biblioteca de clases utilizando .NET Core y lo guarda en la carpeta "Aplicacion". Las bibliotecas de clases son conjuntos de código reutilizable que pueden ser referenciados y utilizados en otros proyectos .NET Core. En este caso, el nombre "Aplicacion" sugiere que esta biblioteca podría contener clases y lógica relacionada con la capa de aplicación, como la implementación de casos de uso y la interacción con la interfaz de usuario. 🚧🔧
+    - Crea un nuevo proyecto de biblioteca de clases utilizando .NET Core y lo guarda en la carpeta "Aplicacion". Las bibliotecas de clases son conjuntos de código reutilizable que pueden ser referenciados y utilizados en otros proyectos .NET Core. En este caso, el nombre "Aplicacion" sugiere que esta biblioteca podría contener clases y lógica relacionada con la capa de aplicación, como la implementación de casos de uso y la interacción con la interfaz de usuario 🚧🔧
         ```
         dotnet new classlib -o Aplicacion
         ```
 
     ---
-    - Crea un nuevo proyecto de biblioteca de clases utilizando .NET Core y lo guarda en la carpeta "Seguridad". Las bibliotecas de clases son conjuntos de código reutilizable que pueden ser referenciados y utilizados en otros proyectos .NET Core. En este caso, el nombre "Seguridad". 🚧🔧
+    - Crea un nuevo proyecto de API web utilizando .NET Core y lo guarda en la carpeta "API". Este comando establece las bases para crear una API utilizando el framework .NET Core, que puede ser utilizada para exponer servicios a través de HTTP 🚧🔧
         ```
-        dotnet new classlib -o Seguridad
-        ```
-
-    ---
-    - Crea un nuevo proyecto de API web utilizando .NET Core y lo guarda en la carpeta "WebApi". Este comando establece las bases para crear una API utilizando el framework .NET Core, que puede ser utilizada para exponer servicios a través de HTTP. 🚧🔧
-        ```
-        dotnet new webapi -o WebApi
+        dotnet new webapi -o API
         ```
 
     ---
-    - Agrega el proyecto ubicado en la carpeta "Dominio" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Dominio" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución. 🚧🔧
+    - Agrega el proyecto ubicado en la carpeta "Dominio" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Dominio" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución 🚧🔧
         ```
         dotnet sln add Dominio/
         ```
 
     ---
-    - Agrega el proyecto ubicado en la carpeta "Persistencia" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Persistencia" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución. 🚧🔧
+    - Agrega el proyecto ubicado en la carpeta "Persistencia" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Persistencia" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución 🚧🔧
         ```
         dotnet sln add Persistencia/
         ```
 
     ---
-    - Agrega el proyecto ubicado en la carpeta "Aplicacion" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Aplicacion" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución. 🚧🔧
+    - Agrega el proyecto ubicado en la carpeta "Aplicacion" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Aplicacion" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución 🚧🔧
         ```
         dotnet sln add Aplicacion/
         ```
 
     ---
-    - Agrega el proyecto ubicado en la carpeta "Seguridad" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "Seguridad" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución. 🚧🔧
+    - Agrega el proyecto ubicado en la carpeta "API" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "API" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución 🚧🔧
         ```
-        dotnet sln add Seguridad/
-        ```
-
-    ---
-    - Agrega el proyecto ubicado en la carpeta "WebApi" al archivo de solución actual de .NET Core. Esto permite incluir el proyecto "WebApi" dentro de la solución y facilita la gestión de múltiples proyectos en un mismo contexto de desarrollo. Es útil cuando se tiene una solución que consta de varios proyectos y se quiere mantener todo organizado en una estructura de solución. 🚧🔧
-        ```
-        dotnet sln add WebApi/
+        dotnet sln add API/
         ```
     ---
 
@@ -162,7 +145,7 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
 
  - ### Referencias
 
-    - Agrega una referencia al proyecto "Dominio" desde el proyecto "Aplicacion". Al hacer esto, el proyecto "Aplicacion" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Dominio". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de aplicación depende de lógica y modelos definidos en el proyecto de dominio y tambien agrega una referencia al proyecto "Persistencia" desde el proyecto "Aplicacion". Al hacer esto, el proyecto "Aplicacion" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Persistencia". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de aplicación necesita interactuar con la capa de persistencia, por ejemplo, para realizar operaciones de acceso a base de datos. 🔗🔧
+    - Agrega una referencia al proyecto "Dominio" desde el proyecto "Aplicacion". Al hacer esto, el proyecto "Aplicacion" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Dominio". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de aplicación depende de lógica y modelos definidos en el proyecto de dominio y tambien agrega una referencia al proyecto "Persistencia" desde el proyecto "Aplicacion". Al hacer esto, el proyecto "Aplicacion" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Persistencia". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de aplicación necesita interactuar con la capa de persistencia, por ejemplo, para realizar operaciones de acceso a base de datos 🔗🔧
         ```
         cd Aplicacion/
         ```
@@ -174,19 +157,16 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
         ```
     
     ---
-    - Agrega una referencia al proyecto "Aplicacion" desde el proyecto "WebApi". Al hacer esto, el proyecto "WebApi" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Aplicacion". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de la API necesita interactuar con la capa de aplicación para exponer funcionalidades a través de la interfaz de la API y tambien agrega una referencia al proyecto "Seguridad" desde el proyecto "WebApi". Al hacer esto, el proyecto "WebApi" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Seguridad". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de la API necesita interactuar con la capa de aplicación para exponer funcionalidades a través de la interfaz de la API. 🔗🔧
+    - Agrega una referencia al proyecto "Aplicacion" desde el proyecto "API". Al hacer esto, el proyecto "API" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Aplicacion". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de la API necesita interactuar con la capa de aplicación para exponer funcionalidades a través de la interfaz de la API y tambien agrega una referencia al proyecto "Seguridad" desde el proyecto "API". Al hacer esto, el proyecto "API" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Seguridad". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de la API necesita interactuar con la capa de aplicación para exponer funcionalidades a través de la interfaz de la API 🔗🔧
         ```
-        cd WebApi/
+        cd API/
         ```
         ```
         dotnet add reference ../Aplicacion/
         ```
-        ```
-        dotnet add reference ../Seguridad/
-        ```
     ---
 
-    - Agrega una referencia al proyecto "Dominio" desde el proyecto "Persistencia". Al hacer esto, el proyecto "Persistencia" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Dominio". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de persistencia necesita acceder a los modelos y reglas de negocio definidos en el proyecto de dominio. 🔗🔧
+    - Agrega una referencia al proyecto "Dominio" desde el proyecto "Persistencia". Al hacer esto, el proyecto "Persistencia" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Dominio". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de persistencia necesita acceder a los modelos y reglas de negocio definidos en el proyecto de dominio 🔗🔧
         ```
         cd Persistencia/
         ```
@@ -195,15 +175,6 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
         ```
     ---
 
-
-    - Agrega una referencia al proyecto "Aplicacion" desde el proyecto "Seguridad". Al hacer esto, el proyecto "Seguridad" podrá acceder y utilizar las clases y funcionalidades proporcionadas por el proyecto "Aplicacion". Esto es útil cuando se tiene una estructura de capas en la que el proyecto de persistencia necesita acceder a los modelos y reglas de negocio definidos en el proyecto de dominio. 🔗🔧
-        ```
-        cd Seguridad/
-        ```
-        ```
-        dotnet add reference ../Aplicacion/
-        ```
-    ---
 
 ---
 <img src="https://1.bp.blogspot.com/-epbYlUPl2-c/Xh6loHanlbI/AAAAAAAACpI/Ift8Ukv9AbQVIHl2aKTLMjr-LA25WN8lwCLcBGAsYHQ/s1600/ASP.NET%2BCore.jpg" alt="https://1.bp.blogspot.com/-epbYlUPl2-c/Xh6loHanlbI/AAAAAAAACpI/Ift8Ukv9AbQVIHl2aKTLMjr-LA25WN8lwCLcBGAsYHQ/s1600/ASP.NET%2BCore.jpg" style="width: 3000px;">
@@ -218,113 +189,105 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
     - ### Dominio
 
         ---
-        - Agrega el paquete "Microsoft.EntityFrameworkCore" con la versión 8.0.1 al proyecto actual. Entity Framework Core es una biblioteca popular para el acceso a bases de datos en proyectos .NET Core, y esta instrucción instalará la versión específica 8.0.1 de dicha biblioteca en el proyecto. Esto permitirá al proyecto utilizar Entity Framework Core para interactuar con bases de datos. 📂🔧
+        - La línea de comando dotnet add package Microsoft.EntityFrameworkCore --version 8.0.3 agrega el paquete "Microsoft.EntityFrameworkCore" a tu proyecto actual utilizando la versión 8.0.3 de Entity Framework Core. Este paquete es esencial para el desarrollo de aplicaciones .NET que requieren acceso a bases de datos relacionales. Entity Framework Core simplifica la interacción con bases de datos al permitirte trabajar con objetos de dominio en lugar de SQL directamente. Con características como el seguimiento de cambios, consultas LINQ y migraciones de base de datos, Entity Framework Core facilita el desarrollo y el mantenimiento de aplicaciones 📂🔧
             ```
-           dotnet add package Microsoft.EntityFrameworkCore --version 8.0.1
+           dotnet add package Microsoft.EntityFrameworkCore --version 8.0.3
             ```
             ---
 
-        - Agrega el paquete "MediatR.Extensions.Microsoft.DependencyInjection" con la versión 11.1.0 al proyecto actual. MediatR es una biblioteca que implementa el patrón Mediator para la comunicación entre componentes en aplicaciones .NET, y este paquete proporciona integración con la inyección de dependencias de Microsoft. 📂🔧
+        - Esta línea de comando agrega el paquete 'MediatR.Extensions.Microsoft.DependencyInjection' a tu proyecto actual utilizando la versión 11.1.0. MediatR es una biblioteca que facilita la implementación del patrón Mediator en aplicaciones .NET. Al agregar este paquete, obtienes acceso a una serie de extensiones que integran MediatR con el contenedor de inyección de dependencias proporcionado por Microsoft.Extensions.DependencyInjection. Esto simplifica la configuración y la resolución de dependencias para tus controladores y manipuladores de MediatR, lo que facilita el desarrollo de aplicaciones escalables y mantenibles 📂🔧
             ```
             dotnet add package MediatR.Extensions.Microsoft.DependencyInjection --version 11.1.0
             ```
             ---
 
-        - Agrega el paquete "FluentValidation.AspNetCore" con la versión 11.3.0 al proyecto actual. FluentValidation es una biblioteca que permite realizar validaciones en modelos de forma sencilla y declarativa, y este paquete proporciona integración con ASP.NET Core. 📂🔧
+        - La línea de comando dotnet add package FluentValidation.AspNetCore --version 11.3.0 agrega el paquete "FluentValidation.AspNetCore" a tu proyecto actual utilizando la versión 11.3.0. Este paquete es una extensión de FluentValidation diseñada específicamente para integrarse con ASP.NET Core. FluentValidation es una biblioteca que simplifica la validación de modelos en aplicaciones .NET al permitirte definir reglas de validación de manera clara y legible utilizando un enfoque basado en fluidez 📂🔧
             ```
             dotnet add package FluentValidation.AspNetCore --version 11.3.0
             ```
             ---
 
-        - Agrega el paquete "itext7.pdfhtml" con la versión 5.0.2 al proyecto actual. Este paquete pertenece a iText 7, una biblioteca utilizada para trabajar con archivos PDF en aplicaciones .NET. En particular, "itext7.pdfhtml" es una extensión de iText 7 que permite convertir documentos HTML a PDF. 📂🔧
+        - La línea de comando dotnet add package itext7.pdfhtml --version 5.0.3 agrega el paquete "itext7.pdfhtml" a tu proyecto actual utilizando la versión 5.0.3. Este paquete proporciona funcionalidades para convertir documentos HTML a archivos PDF utilizando iText 7, una biblioteca de manipulación de documentos PDF en el entorno de desarrollo .NET. Al agregar este paquete a tu proyecto, podrás generar archivos PDF a partir de contenido HTML de manera eficiente y personalizable, lo que es útil para generar informes, documentos o páginas web como archivos PDF en tu aplicación 📂🔧
             ```
-            dotnet add package itext7.pdfhtml --version 5.0.2
+            dotnet add package itext7.pdfhtml --version 5.0.3
             ```
             ---
 
 
     - ### Persistencia 
         ---
-        - Agrega el paquete "Microsoft.EntityFrameworkCore" con la versión 8.0.1 al proyecto actual. Entity Framework Core es una biblioteca popular para el acceso a bases de datos en proyectos .NET Core, y esta instrucción instalará la versión específica 8.0.1 de dicha biblioteca en el proyecto. Esto permitirá al proyecto utilizar Entity Framework Core para interactuar con bases de datos. 📂🔧
+        - La línea de comando dotnet add package Microsoft.EntityFrameworkCore --version 8.0.3 agrega el paquete "Microsoft.EntityFrameworkCore" a tu proyecto actual utilizando la versión 8.0.3 de Entity Framework Core. Este paquete es esencial para el desarrollo de aplicaciones .NET que requieren acceso a bases de datos relacionales. Entity Framework Core simplifica la interacción con bases de datos al permitirte trabajar con objetos de dominio en lugar de SQL directamente. Con características como el seguimiento de cambios, consultas LINQ y migraciones de base de datos, Entity Framework Core facilita el desarrollo y el mantenimiento de aplicaciones 📂🔧
             ```
-            dotnet add package Microsoft.EntityFrameworkCore --version 8.0.1
-            ```
-            ---
-
-        - Agrega el paquete "Pomelo.EntityFrameworkCore.MySql" con la versión 7.0.0 al proyecto actual. Este paquete proporciona soporte para MySQL en Entity Framework Core y es una opción popular para interactuar con bases de datos MySQL en proyectos .NET Core. 📂🔧
-            ```
-            dotnet add package Pomelo.EntityFrameworkCore.MySql --version 7.0.0
+            dotnet add package Microsoft.EntityFrameworkCore --version 8.0.3
             ```
             ---
 
-        - Agrega el paquete "Dapper" con la versión 2.1.28 al proyecto actual. Dapper es una biblioteca que facilita el acceso y la manipulación de bases de datos en aplicaciones .NET mediante consultas SQL. Proporciona una forma sencilla y eficiente de mapear resultados de consultas a objetos. 📂🔧
+        - La línea de comando dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.2 agrega el paquete "Pomelo.EntityFrameworkCore.MySql" a tu proyecto actual utilizando la versión 8.0.2. Este paquete proporciona soporte para MySQL en Entity Framework Core mediante la implementación de un proveedor de base de datos para MySQL. Al agregar esta versión específica, tu proyecto podrá utilizar Entity Framework Core para interactuar con bases de datos MySQL de manera eficiente y confiable. Esto incluye la capacidad de realizar operaciones de consulta, inserción, actualización y eliminación utilizando Entity Framework Core en un entorno que utiliza MySQL como sistema de gestión de bases de datos 📂🔧
             ```
-            dotnet add package Dapper --version 2.1.28
+            dotnet add package Pomelo.EntityFrameworkCore.MySql --version 8.0.2
             ```
             ---
 
-    - ### Seguridad 
+        - La línea de comando dotnet add package Dapper --version 2.1.35 agrega el paquete "Dapper" a tu proyecto actual utilizando la versión 2.1.35. Dapper es una biblioteca de mapeo objeto-relacional (ORM) ligera y de alto rendimiento para .NET. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de Dapper para interactuar con bases de datos relacionales de una manera eficiente y simplificada. Dapper proporciona métodos de extensión simples pero potentes que te permiten ejecutar consultas SQL y mapear automáticamente los resultados a objetos .NET, lo que facilita el acceso y manipulación de datos en tu aplicación 📂🔧
+            ```
+            dotnet add package Dapper --version 2.1.35
+            ```
+            ---
+
+    - ### API 
         ---
-        - Agrega el paquete "System.IdentityModel.Tokens.Jwt" con la versión 7.2.0 al proyecto actual. Este paquete proporciona funcionalidades relacionadas con la generación y validación de tokens JWT (JSON Web Tokens), que son comunes en implementaciones de autenticación y autorización en aplicaciones web y servicios. 📂🔧
-            ```
-            dotnet add package System.IdentityModel.Tokens.Jwt --version 7.2.0
-            ```
-            ---
-
-    - ### WebApi 
-        ---
-        - Agrega el paquete "AspNetCoreRateLimit" con la versión 5.0.0 al proyecto actual. Este paquete proporciona funcionalidad para la limitación de velocidad (rate limiting) en aplicaciones ASP.NET Core. Es útil para controlar el tráfico de entrada y evitar abusos o excesivas solicitudes de clientes. 📂🔧
+        - La línea de comando dotnet add package AspNetCoreRateLimit --version 5.0.0 agrega el paquete "AspNetCoreRateLimit" a tu proyecto actual utilizando la versión 5.0.0. Este paquete proporciona funcionalidades para limitar y controlar la tasa de solicitudes HTTP en aplicaciones ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de AspNetCoreRateLimit para implementar políticas de limitación de velocidad basadas en diferentes criterios, como la dirección IP, la ruta de la solicitud, el usuario, entre otros. Esto es útil para proteger tus servicios web contra ataques de denegación de servicio (DoS) y garantizar un rendimiento estable y equitativo para todos los clientes 📂🔧
             ```
             dotnet add package AspNetCoreRateLimit --version 5.0.0 
             ```
             ---
 
-        - Agrega el paquete "AutoMapper.Extensions.Microsoft.DependencyInjection" con la versión 12.0.1 al proyecto actual. Este paquete proporciona extensiones para el framework AutoMapper que permiten una fácil integración con la inyección de dependencias de Microsoft. 📂🔧
+        - La línea de comando dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.0.1 agrega el paquete "AutoMapper.Extensions.Microsoft.DependencyInjection" a tu proyecto actual utilizando la versión 12.0.1. Este paquete proporciona una integración fácil y conveniente de AutoMapper con el contenedor de inyección de dependencias de ASP.NET Core. AutoMapper es una biblioteca que simplifica la asignación de propiedades entre objetos en aplicaciones .NET. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de AutoMapper para configurar fácilmente la asignación de propiedades en tus servicios y controladores ASP.NET Core, lo que facilita el desarrollo de aplicaciones con menos código repetitivo y más legible 📂🔧
             ```
             dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 12.0.1  
             ```
             ---
 
-        - Agrega el paquete "Microsoft.AspNetCore.Mvc.Versioning" con la versión 5.1.0 al proyecto actual. Este paquete proporciona funcionalidades para la versión de API en aplicaciones ASP.NET Core, lo que te permite administrar y controlar las versiones de tus API de manera efectiva. 📂🔧
+        - La línea de comando dotnet add package Microsoft.AspNetCore.Mvc.Versioning --version 5.1.0 agrega el paquete "Microsoft.AspNetCore.Mvc.Versioning" a tu proyecto actual utilizando la versión 5.1.0. Este paquete proporciona funcionalidades para la versión de API en aplicaciones ASP.NET Core MVC. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de versionado de API proporcionadas por Microsoft.AspNetCore.Mvc.Versioning para gestionar diferentes versiones de tus API, lo que permite una evolución controlada de tus servicios y una mejor experiencia para los usuarios y consumidores de la API 📂🔧
             ```
             dotnet add package Microsoft.AspNetCore.Mvc.Versioning --version 5.1.0 
             ```
             ---
 
-        - Agrega el paquete "Microsoft.AspNetCore.OpenApi" con la versión 8.0.1 al proyecto actual. Proporciona API para anotar puntos finales del controlador de ruta en ASP.NET Core con anotaciones OpenAPI. 📂🔧
+        - La línea de comando dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.3 agregaría el paquete "Microsoft.AspNetCore.OpenApi" a tu proyecto actual utilizando la versión 8.0.3. Este paquete proporciona funcionalidades para generar documentación de API utilizando OpenAPI / Swagger en aplicaciones ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de generación de documentación de API proporcionadas por Microsoft.AspNetCore.OpenApi para exponer de manera clara y detallada los endpoints y modelos de datos de tus servicios web, lo que facilita la comprensión y la interacción con tu API 📂🔧
             ```
-            dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.1
+            dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.3
             ```
             ---
 
-        - Agrega el paquete "Microsoft.EntityFrameworkCore.Design" con la versión 8.0.1 al proyecto actual. Este paquete proporciona herramientas de diseño para Entity Framework Core, que son útiles para trabajar con bases de datos y realizar migraciones en proyectos .NET Core. 📂🔧
+        - La línea de comando dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.3 agrega el paquete "Microsoft.EntityFrameworkCore.Design" a tu proyecto actual utilizando la versión 8.0.3. Este paquete proporciona las herramientas de diseño necesarias para trabajar con Entity Framework Core en el entorno de desarrollo. Estas herramientas son esenciales para realizar tareas como generar migraciones de base de datos, actualizar la base de datos, y generar clases de contexto a partir de una base de datos existente 📂🔧
             ```
-            dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.1
+            dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.3
             ```
            
             ---
 
-        - Agrega el paquete "Microsoft.AspNetCore.Authentication.JwtBearer" con la versión 8.0.1 al proyecto actual. Este paquete proporciona funcionalidad para la autenticación basada en tokens JWT (JSON Web Tokens) en aplicaciones ASP.NET Core. 📂🔧
+        - La línea de comando dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.3 agregaría el paquete "Microsoft.AspNetCore.Authentication.JwtBearer" a tu proyecto actual utilizando la versión 8.0.3. Este paquete proporciona soporte para la autenticación basada en tokens JWT (JSON Web Tokens) en aplicaciones ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de autenticación proporcionadas por Microsoft.AspNetCore.Authentication.JwtBearer para proteger tus endpoints de API mediante la verificación de tokens JWT, lo que garantiza un acceso seguro a tus recursos protegidos 📂🔧
             ```
-            dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.1
+            dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 8.0.3
             ```
            
             ---
 
-        - Agrega el paquete "Swashbuckle.AspNetCore" con la versión 6.5.0 al proyecto actual. Swashbuckle.AspNetCore es una biblioteca que permite generar automáticamente una documentación interactiva (Swagger UI) para tu API ASP.NET Core, lo que facilita la exploración y prueba de los endpoints de la API. 📂🔧
+        - La línea de comando dotnet add package Swashbuckle.AspNetCore --version 6.5.0 agrega el paquete "Swashbuckle.AspNetCore" a tu proyecto actual utilizando la versión 6.5.0. Este paquete proporciona funcionalidades para generar documentación de API utilizando OpenAPI / Swagger en aplicaciones ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de generación de documentación de API proporcionadas por Swashbuckle.AspNetCore para exponer de manera clara y detallada los endpoints y modelos de datos de tus servicios web, lo que facilita la comprensión y la interacción con tu API 📂🔧
             ```
             dotnet add package Swashbuckle.AspNetCore --version 6.5.0  
             ```
             ---
 
-        - Agrega el paquete "Serilog.AspNetCore" con la versión 8.0.0 al proyecto actual. Este paquete proporciona . 📂🔧
+        - La línea de comando dotnet add package Serilog.AspNetCore --version 8.0.1 agrega el paquete "Serilog.AspNetCore" a tu proyecto actual utilizando la versión 8.0.1. Este paquete proporciona integración de Serilog con ASP.NET Core, permitiéndote configurar y utilizar Serilog como tu proveedor de registros de forma sencilla en tu aplicación ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las capacidades de registro avanzadas proporcionadas por Serilog para gestionar y analizar registros de manera eficiente y flexible 📂🔧
             ```
-            dotnet add package Serilog.AspNetCore --version 8.0.0
+            dotnet add package Serilog.AspNetCore --version 8.0.1
             ```
            
             ---
 
-        - Agrega el paquete "Swashbuckle.AspNetCore.Swagger" con la versión 6.5.0 al proyecto actual. Este paquete proporciona . 📂🔧
+        - La línea de comando dotnet add package Swashbuckle.AspNetCore.Swagger --version 6.5.0 agrega el paquete "Swashbuckle.AspNetCore.Swagger" a tu proyecto actual utilizando la versión 6.5.0. Este paquete permite integrar Swagger con aplicaciones ASP.NET Core, facilitando la generación automática de documentación Swagger para tu API ASP.NET Core. Al agregar esta versión específica, tu proyecto puede aprovechar las últimas mejoras y características proporcionadas por Swashbuckle para generar y personalizar la documentación Swagger de tu API de manera eficiente 📂🔧
             ```
             dotnet add package Swashbuckle.AspNetCore.Swagger --version 6.5.0
             ```
@@ -342,7 +305,7 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
     - ### Crear  
         - Este comando genera una migración inicial llamada "InitialCreate" utilizando Entity Framework Core. Las migraciones permiten mantener sincronizada la estructura de la base de datos con los cambios en el modelo de datos en proyectos .NET Core ✈️🔧
             ```
-            dotnet ef migrations add InitialCreate --project ./Persistencia/ --startup-project ./ApiIncidencias/ --output-dir ./Data/Migrations/  
+            dotnet ef migrations add InitialCreate --project ./Persistencia/ --startup-project ./API/ --output-dir ./Data/Migrations/  
             ```
             
         ---
@@ -350,7 +313,7 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
     - ### Actualizar
         - Este comando aplica las migraciones pendientes en la base de datos, lo que implica actualizar la estructura de la base de datos para que coincida con el estado actual del modelo de datos en los proyectos .NET Core involucrados. ✈️🔧
             ```
-            dotnet ef database update --project ./Persistencia/ --startup-project ./ApiIncidencias/  
+            dotnet ef database update --project ./Persistencia/ --startup-project ./API/  
             ```
             
         ---
@@ -368,9 +331,9 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
 
     **Ejemplos:**
     
-    - Compila el proyecto ubicado en la carpeta "Infrastructure". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto. 🏗️
+    - Compila el proyecto ubicado en la carpeta "Persistencia". Esto significa que el código fuente del proyecto se compilará en ensamblados ejecutables, bibliotecas o archivos de salida según la configuración del proyecto. 🏗️
         ```
-        dotnet build ./Infrastructure/
+        dotnet build ./Persistencia/
         ```
             
         ---
@@ -382,7 +345,7 @@ Estas son las carpertas de configuracion las cuales vamos a utilizar para nuestr
      --- 
 ---
 
-   <img src="https://media.discordapp.net/attachments/1115646463020634142/1134480692575731812/Presentacion_de_marca_personal_Acuarela_Elegante_y_minimalista_Azul_y_rosa.png?width=1173&height=660" alt="img" style="width: 3000px;">
+   <img src="https://dinahosting.com/blog/upload/2023/11/net-8.jpg" alt="img" style="width: 3000px;">
 
 
 
