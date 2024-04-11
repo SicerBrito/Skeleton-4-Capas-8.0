@@ -32,7 +32,7 @@ Esqueleto con la estructura base para el desarrollo BackEnd con .Net 8.0, sus Sn
             - [Crear](#crear) 🔧
             - [Actualizar](#actualizar) 🔧
         - [Visualización de posibles errores](#visualización-de-posibles-errores) ⁉️
-    - [Construcción del Código Base](#construcción-del-código-base)
+    - [Construcción del Código Base](#construcción-del-código-base) 🧑‍💻
 
 
 ---
